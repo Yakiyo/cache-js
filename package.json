@@ -1,0 +1,57 @@
+{
+  "name": "ts-package-template",
+  "version": "1.0.0",
+  "description": "Simple template for creating npm packages with typescript",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/typings",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js",
+      "node": "./lib/cjs/index.js",
+      "default": "./lib/esm/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf lib/ && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+    "lint": "eslint . --ext .ts",
+    "husk": "husky install",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prepublishOnly": "npm run lint && npm run build",
+    "postinstall": "npm run build && npm run husk",
+    "pretty:w": "prettier --write **/*.ts",
+    "pretty:c": "prettier --check **/*.ts"
+  },
+  "keywords": [
+    "template",
+    "typescript",
+    "npm",
+    "package"
+  ],
+  "author": "Yakiyo",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "prettier": "2.7.1",
+    "typescript": "4.7"
+  },
+  "files": [
+    "lib/"
+  ],
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 4,
+    "useTabs": true,
+    "semi": true,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "endOfLine": "lf"
+  }
+}

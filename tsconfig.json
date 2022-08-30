@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                                                             
+    "rootDir": "./src",                              
+    "moduleResolution": "node",                      
+    "declaration": true,                                                        
+    "removeComments": true,                          
+    "declarationDir": "./lib/typings",               
+    "esModuleInterop": true,                      
+    "forceConsistentCasingInFileNames": true,        
+    "strict": true,                                  
+    "noImplicitAny": true,                           
+    "noUnusedLocals": true,                          
+    "noUnusedParameters": true,                      
+    "noImplicitReturns": true,                       
+  },
+  "include": [
+    "src/"
+  ],
+  "exclude": [
+    "test/"
+  ]
+}

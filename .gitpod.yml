@@ -1,0 +1,5 @@
+tasks:
+  - name: Install dependencies
+    init: | 
+      pnpm install
+      pnpm run build
