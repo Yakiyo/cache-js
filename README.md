@@ -1,4 +1,6 @@
-# Cache JS <img src="https://github.com/Yakiyo/cache-js/actions/workflows/build.yml/badge.svg"> <img src="https://github.com/Yakiyo/cache-js/actions/workflows/lint.yml/badge.svg"> [![GitHub Repo stars](https://img.shields.io/github/stars/Yakiyo/cache-js?style=social)](https://github.com/Yakiyo/cache-js)
+# <div align="center">Cache JS</div> 
+
+<div align="center"><img src="https://github.com/Yakiyo/cache-js/actions/workflows/build.yml/badge.svg"> <img src="https://github.com/Yakiyo/cache-js/actions/workflows/lint.yml/badge.svg"> <a href="https://github.com/Yakiyo/cache-js"><img src="https://img.shields.io/github/stars/Yakiyo/cache-js?style=social"></a> <a href="https://www.npmjs.com/package/@yakiyo/cache-js"><img src="https://img.shields.io/npm/v/@yakiyo/cache-js"></a> </div>
 
 ## About 
 Minimal implementation of a cache using javascript's [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
@@ -7,11 +9,11 @@ Lightweight and easy to use. Includes typescript typings.
 ## Installation
 Just install the package
 ```bash
-$ npm install cache-js
+$ npm install @yakiyo/cache-js
 # or 
-$ yarn add cache-js
+$ yarn add @yakiyo/cache-js
 # or
-$ pnpm add cache-js
+$ pnpm add @yakiyo/cache-js
 ```
 
 ## Usage
@@ -20,11 +22,11 @@ Import the package in your file and initialize the class
 
 ```js
 // Es6 imports
-import Cache from 'cache-js';
+import Cache from '@yakiyo/cache-js';
 
 // Use dynamic import for Commonjs
 // cz the package is written in esm
-const { Cache } = await import('cache-js'); 
+const { Cache } = await import('@yakiyo/cache-js'); 
 
 const cache = new Cache(60);
 ```
