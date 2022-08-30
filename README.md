@@ -26,8 +26,9 @@ Import the package in your file and initialize the class
 // Es6 imports
 import Cache from 'cache-js';
 
-// Commonjs require
-const { Cache } = require('cache-js'); 
+// Use dynamic import for Commonjs
+// cz the package is written in esm
+const { Cache } = await import('cache-js'); 
 
 const cache = new Cache(60);
 ```
