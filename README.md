@@ -1,12 +1,8 @@
-# Cache JS
-<div align="center"><img src="https://github.com/Yakiyo/cache-js/actions/workflows/build.yml/badge.svg"> <img src="https://github.com/Yakiyo/cache-js/actions/workflows/lint.yml/badge.svg"></div>
-<!-- <div align="center">
-<a href="https://gitpod.io/from-referrer/"><img src="./image/gitpod.svg" alt="Open on gitpod https://gitpod.io/from-referrer/"></a>
-</div> -->
+# Cache JS <img src="https://github.com/Yakiyo/cache-js/actions/workflows/build.yml/badge.svg"> <img src="https://github.com/Yakiyo/cache-js/actions/workflows/lint.yml/badge.svg"> [![GitHub Repo stars](https://img.shields.io/github/stars/Yakiyo/cache-js?style=social)](https://github.com/Yakiyo/cache-js)
 
-## About
+## About 
 Minimal implementation of a cache using javascript's [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
-Lightweight and easy to use. Includes typescript typings.
+Lightweight and easy to use. Includes typescript typings. 
 
 ## Installation
 Just install the package
@@ -79,3 +75,12 @@ Returns a new map of the key value pairs in the cache
 ```js
 cache.toMap() // [Map Object]
 ```
+<hr>
+
+## Side-note
+This project is inspired by [@discordjs/Collection](https://discord.js.org/#/docs/collection)
+
+## Author
+**Cache-js** © [Yakiyo](https://github.com/Yakiyo). Authored and maintained by Yakiyo.
+
+Released under [MIT](https://opensource.org/licenses/MIT) License
