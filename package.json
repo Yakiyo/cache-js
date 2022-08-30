@@ -30,9 +30,8 @@
     "pretty:c": "prettier --check **/*.ts"
   },
   "keywords": [
-    "template",
-    "typescript",
-    "npm",
+    "cache",
+    "map",
     "package"
   ],
   "author": "Yakiyo",
