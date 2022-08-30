@@ -1,5 +1,5 @@
 {
-  "name": "cache-js",
+  "name": "@yakiyo/cache-js",
   "version": "1.0.0",
   "description": "Minimal implementation of a cache using javascript Map",
   "main": "lib/index.js",
