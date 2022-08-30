@@ -2,8 +2,8 @@
   "name": "cache-js",
   "version": "1.0.0",
   "description": "Minimal implementation of a cache using javascript Map",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "types": "lib/typings",
   "type": "module",
   "repository": {
@@ -12,15 +12,15 @@
   },
   "exports": {
     ".": {
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js",
-      "node": "./lib/cjs/index.js",
-      "default": "./lib/esm/index.js"
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
+      "node": "./lib/index.js",
+      "default": "./lib/index.js"
     }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf lib/ && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+    "build": "rm -rf lib/ && tsc -p tsconfig.json",
     "lint": "eslint . --ext .ts",
     "husk": "husky install",
     "lint:fix": "eslint . --ext .ts --fix",
