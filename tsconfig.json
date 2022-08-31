@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "module": "ES2020",
+    "module": "CommonJS",
     "outDir": "./lib/"
   },
   "include": [
