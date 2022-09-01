@@ -1,6 +1,7 @@
 type v<T> = {
 	data: T;
 	createdAt: Date;
+	duration: number;
 };
 
 /**
@@ -18,7 +19,7 @@ class Cache<K, V> extends Map<K, v<V>> {
 	private readonly duration: number = 0;
 	/**
 	 * Creates an instance of Cache.
-	 * @param {number} [duration]
+	 * @param {number} [duration] Default duration for entries
 	 * @memberof Cache
 	 */
 	constructor(duration?: number) {
@@ -32,41 +33,46 @@ class Cache<K, V> extends Map<K, v<V>> {
 	/**
 	 * Check's if a entry is valid or expired
 	 * Always returns true if duration set to 0
-	 * @param {K} key
+	 * @param {K} key Key of the entry to check
 	 * @returns {*}  {boolean}
 	 * @memberof Cache
 	 */
 	public valid(key: K): boolean {
 		if (!key) throw new TypeError('Argument key is required');
-		if (this.duration === 0) return true;
 		const val = this.get(key);
 		if (!val) return false;
+		if (val.duration === 0) return false;
 		return (
-			Math.abs((val.createdAt.getTime() - new Date().getTime()) / 1000) <
-			this.duration
+			Math.abs((new Date().getTime() - val.createdAt.getTime()) / 1000) <
+			val.duration
 		);
 	}
 	/**
 	 * Add's a new entry to the cache
 	 *
-	 * @param {K} key
-	 * @param {V} value
+	 * @param {K} key entry key
+	 * @param {V} value entry value
+	 * @param {number} [duration] duration to remain valid, else uses default duration
 	 * @returns {*}  {(V | undefined)}
 	 * @memberof Cache
 	 */
-	public add(key: K, value: V): V | undefined {
+
+	public add(key: K, value: V, duration?: number): V | undefined {
 		if (!key || !value)
 			throw new TypeError('Arguments keys and values are required');
+		if (duration && typeof duration !== 'number')
+			throw new TypeError('Argument duration must be a number');
 		this.set(key, {
 			data: value,
 			createdAt: new Date(),
+			duration: duration || this.duration,
 		});
 		return this.get(key)?.data;
 	}
 	/**
 	 * Fetches a value from the cache. If expired returns undefined
 	 *
-	 * @param {K} key
+	 * @param {K} key Entry key
 	 * @returns {*}  {(V | undefined)}
 	 * @memberof Cache
 	 */
@@ -82,7 +88,7 @@ class Cache<K, V> extends Map<K, v<V>> {
 	/**
 	 * Removes a entry from the cache
 	 *
-	 * @param {K} key
+	 * @param {K} key Entry key
 	 * @memberof Cache
 	 */
 	public remove(key: K): void {
@@ -90,7 +96,7 @@ class Cache<K, V> extends Map<K, v<V>> {
 	}
 	/**
 	 * Clears all expired values in the cache
-	 *
+	 * and returns number of removed entries
 	 * @returns {*}  {number}
 	 * @memberof Cache
 	 */
