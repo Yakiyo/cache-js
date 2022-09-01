@@ -24,9 +24,8 @@ Import the package in your file and initialize the class
 // Es6 imports
 import Cache from '@yakiyo/cache-js';
 
-// Use dynamic import for Commonjs
-// cz the package is written in esm
-const { Cache } = await import('@yakiyo/cache-js'); 
+// Commonjs require
+const Cache = require('@yakiyo/cache-js'); 
 
 const cache = new Cache<k, v>(60);
 ```
