@@ -20,7 +20,7 @@ $ pnpm add @yakiyo/cache-js
 
 Import the package in your file and initialize the class
 
-```js
+```ts
 // Es6 imports
 import Cache from '@yakiyo/cache-js';
 
@@ -28,53 +28,53 @@ import Cache from '@yakiyo/cache-js';
 // cz the package is written in esm
 const { Cache } = await import('@yakiyo/cache-js'); 
 
-const cache = new Cache(60);
+const cache = new Cache<k, v>(60);
 ```
-The constructor takes a number which indicated the duration in seconds upto which the cache should remain valid. Defaults to zero which means every entry is forever valid.
+The constructor takes a number which indicated the default duration in seconds upto which the cache should remain valid. You can also set duration per entry with the [add](#addkey-value-value) method. The default is 0 if not specified while initiating.
 
 ## Methods
 The Cache class extends javascript's base [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) class, so every method of Map can be used on instances of the cache class too.
-### `valid(key): boolean`
+### `valid(key: k): boolean`
 Checks if a key is valid or not using the duration specified while initializing the class
-```js
+```ts
 cache.valid('key-name'); // True or False
 ```
 
-### `add(key, value): value`
-Adds a new entry to the cache
-```js
-cache.add('key', 'value'); // 'value'
+### `add(key: k, value: v, duration?: number): value`
+Adds a new entry to the cache. Duration is the time in seconds till which the entry should be valid. If unspecified, it uses the default duration specified while initiating the class. If even that is set to 0, the entry remains forever valid.
+```ts
+cache.add('key', 'value', 20); // 'value'
 ```
 
-### `fetch(key): value | undefined`
-Fetches a value from the cache. Returns undefined if the key doesn't exist or if the key expires. If they key expires, it is internally deleted.
-```js
+### `fetch(key: k): value | undefined`
+Fetches a value from the cache. Returns undefined if the key doesn't exist or if the key expires. If the key expires, it is internally deleted.
+```ts
 cache.fetch('key'); // 'value'
 cache.fetch('non-existent-key'); // undefined
 cache.fetch('expired-key'); // undefined
 ```
 
-### `remove(key): void`
+### `remove(key: k): void`
 Removes an entry from the cache
-```js
+```ts
 cache.remove('key');
 ```
 
 ### `sweep(): cache`
 Clears all expired entries from the cache.
-```js
+```ts
 cache.sweep(); // cache
 ```
 
 ### `toArray(): Array`
 Returns an array of all the values of cache
-```js
+```ts
 cache.toArray(); // ['value 1', 'value 2']
 ```
 
 ### `toMap(): Map`
 Returns a new map of the key value pairs in the cache
-```js
+```ts
 cache.toMap() // [Map Object]
 ```
 <hr>
