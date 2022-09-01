@@ -6,7 +6,7 @@ type v<T> = {
 /**
  * The base cache class
  */
-export class Cache<K, V> extends Map<K, v<V>> {
+class Cache<K, V> extends Map<K, v<V>> {
 	/**
 	 * The amount of time cache entries should be valid
 	 * in seconds
@@ -125,4 +125,4 @@ export class Cache<K, V> extends Map<K, v<V>> {
 	}
 }
 
-export default Cache;
+export = Cache;
