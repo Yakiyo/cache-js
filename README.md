@@ -36,13 +36,19 @@ The Cache class extends javascript's base [Map](https://developer.mozilla.org/en
 ### `valid(key: k): boolean`
 Checks if a key is valid or not using the duration specified while initializing the class
 ```ts
-cache.valid('key-name'); // True or False
+cache.valid('key-name'); // true or false
 ```
 
-### `add(key: k, value: v, duration?: number): value`
+### `add(key: k, value: v, duration?: number): this`
 Adds a new entry to the cache. Duration is the time in seconds till which the entry should be valid. If unspecified, it uses the default duration specified while initiating the class. If even that is set to 0, the entry remains forever valid.
 ```ts
 cache.add('key', 'value', 20); // 'value'
+```
+
+### `addMany(...entires: Array<[K, V]>): this`
+Adds multiple entries to the cache. The duration is the default duration set during initialization. It takes multiple arguments, each of them being an array. The array being composed to two elements, the first one being the key, the second one being the value
+```ts
+cache.addMany(['k1', 'v1'], ['k2', 'v2'], ['k3', 'v3']) // Returns the cache
 ```
 
 ### `fetch(key: k): value | undefined`
@@ -53,25 +59,31 @@ cache.fetch('non-existent-key'); // undefined
 cache.fetch('expired-key'); // undefined
 ```
 
-### `remove(key: k): void`
+### `remove(key: k): this`
 Removes an entry from the cache
 ```ts
 cache.remove('key');
 ```
 
-### `sweep(): cache`
+### `removeMany(...keys: Array<K>): this`
+Removes multiple entries from the cache. It takes multiple arguments, each of them being a key, the key of the entry to remove 
+```ts
+cache.addMany(['k1', 'v1'], ['k2', 'v2'], ['k3', 'v3']) // Returns the cache
+```
+
+### `sweep(): this`
 Clears all expired entries from the cache.
 ```ts
 cache.sweep(); // cache
 ```
 
-### `toArray(): Array`
+### `toArray(): Array<V>`
 Returns an array of all the values of cache
 ```ts
 cache.toArray(); // ['value 1', 'value 2']
 ```
 
-### `toMap(): Map`
+### `toMap(): Map<K, V>`
 Returns a new map of the key value pairs in the cache
 ```ts
 cache.toMap() // [Map Object]
