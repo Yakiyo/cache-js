@@ -57,7 +57,7 @@ class Cache<K, V> extends Map<K, v<V>> {
 	 * @memberof Cache
 	 */
 
-	public add(key: K, value: V, duration?: number): V | undefined {
+	public add(key: K, value: V, duration?: number): this {
 		if (!key || !value)
 			throw new TypeError('Arguments keys and values are required');
 		if (duration && typeof duration !== 'number')
@@ -67,7 +67,7 @@ class Cache<K, V> extends Map<K, v<V>> {
 			createdAt: new Date(),
 			duration: duration || this.duration,
 		});
-		return this.get(key)?.data;
+		return this;
 	}
 	/**
 	 * Fetches a value from the cache. If expired returns undefined
@@ -91,8 +91,22 @@ class Cache<K, V> extends Map<K, v<V>> {
 	 * @param {K} key Entry key
 	 * @memberof Cache
 	 */
-	public remove(key: K): void {
+	public remove(key: K): this {
 		this.delete(key);
+		return this;
+	}
+	/**
+	 * Adds multiple entries to the cache
+	 *
+	 * @param {...Array<[K, V]>} entries an Array of arrays, where first element of array is the key and second is the value
+	 * @returns {*}  {this}
+	 * @memberof Cache
+	 */
+	public addMany(...entries: Array<[K, V]>): this {
+		entries.forEach((entry) => {
+			this.add(entry[0], entry[1]);
+		});
+		return this;
 	}
 	/**
 	 * Clears all expired values in the cache
