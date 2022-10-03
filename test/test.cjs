@@ -23,5 +23,8 @@ setTimeout(() => {
 // Fetching an entry
 console.log('value 1 initially -', cache.fetch('key'),'\nvalue 2 initially -', cache.fetch('key 2'));
 
+// Testing addMany
+console.log(cache.addMany(['key 3', 'value 3'], ['key 4', 'value 4'], ['key 5', 'value 5']));
+
 // toArray and toMap test
 console.log('Array -', cache.toArray(),'\nMap -', cache.toMap());
