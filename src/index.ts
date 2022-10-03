@@ -109,6 +109,19 @@ class Cache<K, V> extends Map<K, v<V>> {
 		return this;
 	}
 	/**
+	 * Removes multiple entries from the cache
+	 *
+	 * @param {...K[]} keys an Array of keys, keys of entries that are to be removed
+	 * @returns {*}  {this}
+	 * @memberof Cache
+	 */
+	public removeMany(...keys: K[]): this {
+		keys.forEach((key) => {
+			this.remove(key);
+		});
+		return this;
+	}
+	/**
 	 * Clears all expired values in the cache
 	 * and returns number of removed entries
 	 * @returns {*}  {number}
